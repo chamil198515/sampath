@@ -20,7 +20,7 @@ $(document).on("click", "[id ^='btn_add_worknotes_']", function() {
 
 
     workNotes.push({
-        "id": workNotes.length,
+        "id": 0,
         "createdDate": "",
         "modifieddDate": "",
         "submitter": "",
@@ -110,7 +110,7 @@ $(document).on("click", "[id ^='btn_save_']", function() {
     }
 
     $.ajax({
-        url: url, //Add your URL 
+        url: url, //Add your URL
         type: "POST",
         data: JSON.stringify(newRequest),
         contentType: "application/json; charset=utf-8",
@@ -153,6 +153,7 @@ function renderRequest(request_id, isNewRequest) {
                     $('#btn_submit_for_approval').removeClass('hide');
                 }
                 setValues(request, request_id);
+                disableInputFeilds(request_id);
             });
         } else {
             $('#div_assign_details_container_' + request_id).addClass('hide');
@@ -189,7 +190,11 @@ function renderWorkNotes(request_id, worknotesList) {
             }
             element_id = $('#txt_worknotes').attr('id');
             element_id = 'txt_worknotes_' + request_id + '_' + worknotesList[i].id;
-            $($('#txt_worknotes').attr('id', element_id)).val(worknotesList[i].comment);;
+            $($('#txt_worknotes').attr('id', element_id)).val(worknotesList[i].comment);
+
+            if(request_id != 0 && worknotesList[i].id !=0){
+              $('#'+element_id).prop('disabled', true);
+            }
         }
     });
 }
@@ -256,7 +261,7 @@ function setValues(request, request_id) {
     workNotes = []
     if (request.length != 0) {
 
-        $('#txt_Request_id_' + request_id).val(request_id);
+        $('#h1_Request_id_' + request_id).text(request_id);
         $('#txt_employee_id_' + request_id).val(request.employee_id);
         $('#txt_name_' + request_id).val(request.name);
         var contact_details = '';
@@ -285,7 +290,7 @@ function setValues(request, request_id) {
         workNotes = request.comments;
 
     } else {
-        $('#txt_Request_id_' + request_id).val('New Request');
+        $('#h1_Request_id_' + request_id).text('New Request');
     }
 
 
@@ -326,4 +331,27 @@ function setValues(request, request_id) {
     enableDropdown(temp_id, 'https://api.myjson.com/bins/sfhg5', status);
 
     renderWorkNotes(request_id, workNotes);
+}
+
+function disableInputFeilds(request_id) {
+    $('#txt_employee_id_' + request_id).prop('disabled', true);
+    $('#txt_name_' + request_id).prop('disabled', true);
+    $('#txt_contact_' + request_id).prop('disabled', true);
+    $('#txt_rt_' + request_id).prop('disabled', true);
+    $('#ta_bp_' + request_id).prop('disabled', true);
+    $('#txt_fc_' + request_id).prop('disabled', true);
+    $('#txt_date_requested_' + request_id).prop('disabled', true);
+    $('#drop_previous_requests_' + request_id).addClass('disabled')
+    $('#drop_designation_' + request_id).addClass('disabled');
+    $('#drop_branches_' + request_id).addClass('disabled');
+    $('#drop_priority_' + request_id).addClass('disabled');
+    $('#txt_duedate_' + request_id).prop('disabled', true);
+    $('#drop_types_' + request_id).addClass('disabled');
+    $('#drop_delivery_format_' + request_id).addClass('disabled');
+    $('#drop_frequency_' + request_id).addClass('disabled');
+      $('#ta_require_columns_' + request_id).prop('disabled', true);
+    $('#drop_assigned_dpt_' + request_id).addClass('disabled');
+    $('#drop_assigned_user_' + request_id).addClass('disabled');
+    $('#drop_status_' + request_id).addClass('disabled');
+    //$("[id^='txt_worknotes_']").prop('disabled', true);
 }
