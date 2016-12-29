@@ -1,0 +1,45 @@
+{
+	"priority": "3",
+	"comments": [{
+		"id": 123,
+		"createdDate": "12/27/2016",
+		"modifieddDate": null,
+		"comment": "Test Request",
+		"workRequestId": "29",
+		"submitter": "Madhawa Chaminda"
+	}],
+	"status": "CREATED",
+	"name": "Chamil Ananda",
+	"designation": "1",
+	"branch": {
+		"id": 4,
+		"branch_code": "CO1",
+		"branch_name": "Colombo 01",
+		"branch_location": ""
+	},
+	"closedDate": null,
+	"modifiedDate": null,
+	"lastName": null,
+	"request_id": 29,
+	"requested_date": "12/27/2016",
+	"previous_request": null,
+	"delivery_format": "3",
+	"frequency": "DFRE1",
+	"request_type": null,
+	"delivery_mode": "3",
+	"required_columns": "Column 1 Column 2",
+	"filtering_criteria": "FT 1 FT2 ",
+	"report_title": "Test Report",
+	"due_Date": "05/18/2016",
+	"business_purpose": "Test Report",
+	"assignee_department": "",
+	"assignee": "",
+	"employee_id": "E003",
+	"currentuser_id": null,
+	"currentuser_role": null,
+	"contact_details": [{
+		"id": 54,
+		"contact": "mobile : 0772926206 ",
+		"contactType": "mobile"
+	}]
+}

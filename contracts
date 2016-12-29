@@ -1,0 +1,379 @@
+Status
+Assigned
+Approved
+Inprogress
+Rejected
+Completed
+
+
+users/{user_id}/requestSummary HTTP GET
+[
+	{
+	"request_id":"RQ1",
+	"tittle":"New request 1",
+	"business_purpose":"Purpose 1",
+	"requested_date":"01/01/2016",
+	"requested_by":"Chamil Ananda",
+	"due_date":"01/05/2016",
+	"status":"Assigned",
+	"priority":Priority 1"
+	},
+	{
+	"request_id":"RQ2",
+	"tittle":"New request 2",
+	"business_purpose":"Purpose 2",
+	"requested_date":"01/01/2016",
+	"requested_by":"Chamil Ananda",
+	"due_date":"01/05/2016",
+	"status":"In Progress",
+	"priority":Priority 3"
+	}
+]
+
+
+request/{id} HTTP GET
+{
+	"employee_id":"E1",
+	"requested_date":"01/01/2016",
+	"previous_request":"RQ1",
+	"name":"Chamil Ananda",
+	"designaion":"Accountant",
+	"branch":"Colombo",
+	"contact_details":"0772926206",
+	"request_type":"Type 1",
+	"delivery_format":"Excel Sheet",
+	"frequency":"Daily",
+	"delivery_mode":"Email",
+	"required_columns":"xxxxxx, xxx, xx",
+	"filtering_criteria":"xxx",
+	"report_title":"New request 1",
+	"due_Date":"01/05/2016",
+	"priority":Priority 1",
+	"business_purpose":"Purpose 1",
+	"assigned_user":"Madhawa Chaminda"
+
+}
+
+/request HTTP POST
+{
+"employee_id":"E1",
+"requested_date":"01/01/2016",
+"previous_request":"RQ1",
+"name":"Chamil Ananda",
+"designaion":"Accountant",
+"branch":"Colombo",
+"contact_details":"0772926206",
+"request_type":"Type 1",
+"delivery_format":"Excel Sheet",
+"frequency":"Daily",
+"delivery_mode":"Email",
+"required_columns":"xxxxxx, xxx, xx",
+"filtering_criteria":"xxx",
+"report_title":"New request 1",
+"due_Date":"01/05/2016",
+"priority":Priority 1",
+"business_purpose":"Purpose 1"
+}
+
+
+{
+  "success": true,
+  "results": [
+    {
+      "name": "Request 1",
+      "value": "RQ1",
+      "text": "Request 1",
+      "disabled": false
+    },
+    {
+      "name": "Request 2",
+      "value": "RQ2",
+      "text": "Request 2"
+    },
+    {
+      "name": "Request 3",
+      "value": "RQ3",
+      "text": "Request 3"
+    },
+    {
+      "name": "Request 4",
+      "value": "RQ4",
+      "text": "Request 4"
+    }
+  ]
+}
+
+// get previous requests
+[
+	{
+		"name": "Request 1",
+		"value": "RQ1",
+		"text": "Request 1",
+		"disabled": false
+	},
+	{
+		"name": "Request 2",
+		"value": "RQ2",
+		"text": "Request 2"
+	},
+	{
+		"name": "Request 3",
+		"value": "RQ3",
+		"text": "Request 3"
+	},
+	{
+		"name": "Request 4",
+		"value": "RQ4",
+		"text": "Request 4"
+	}
+]
+
+// get Designations
+[
+	{
+		"name": "Chief Executive Officer",
+		"value": "1",
+		"text": "Chief Executive Officer"
+	},
+	{
+		"name": "Chief financial Officer",
+		"value": "2",
+		"text": "Chief financial Officer"
+	},
+	{
+		"name": "General Manger",
+		"value": "3",
+		"text": "General Manger"
+	}
+	,
+	{
+		"name": "Regional Manager",
+		"value": "4",
+		"text": "Regional Manager"
+	}
+	,
+	{
+		"name": "Branch Manager",
+		"value": "5",
+		"text": "Branch Manager"
+	}
+	,
+	{
+		"name": "Branch Officer",
+		"value": "6",
+		"text": "Branch Officer"
+	}
+	,
+	{
+		"name": "Operator",
+		"value": "7",
+		"text": "Operator"
+	}
+]
+
+// get Branches
+[
+	{
+		"name": "Colombo 01",
+		"value": "CO1",
+		"text": "Colombo 01"
+	},
+	{
+		"name": "Gampaha",
+		"value": "GMP",
+		"text": "Gampaha"
+	},
+	{
+		"name": "Head Office Account Branch",
+		"value": "HO-ACC",
+		"text": "Head Office Account Branch"
+	}
+]
+
+// get request type
+[
+	{
+		"name": "Detailed",
+		"value": "1",
+		"text": "Detailed"
+	},
+	{
+		"name": "Summary",
+		"value": "2",
+		"text": "Summary"
+	}
+]
+
+// get Delivery formats
+[
+	{
+		"name": "Excel Sheet",
+		"value": "1",
+		"text": "Excel Sheet"
+	},
+	{
+		"name": "Executable Query",
+		"value": "DF2",
+		"text": "Executable Query"
+	}
+]
+
+// get Delivery formats
+[
+	{
+		"name": "Excel Sheet",
+		"value": "1",
+		"text": "Excel Sheet"
+	},
+	{
+		"name": "CSV",
+		"value": "2",
+		"text": "CSV"
+	},
+	{
+		"name": "PDF",
+		"value": "3",
+		"text": "PDF"
+	}
+
+]
+
+// get Delivery frequency
+[
+	{
+		"name": "Daily",
+		"value": "DFRE1",
+		"text": "Daily"
+	},
+	{
+		"name": "Monthly",
+		"value": "DFRE2",
+		"text": "Monthly"
+	}
+	,
+	{
+		"name": "Yearly",
+		"value": "DFRE3",
+		"text": "Yearly"
+	}
+]
+
+// get Delivery Mode
+[
+	{
+		"name": "Daily",
+		"value": "DFRE1",
+		"text": "Daily"
+	},
+	{
+		"name": "Monthly",
+		"value": "DFRE2",
+		"text": "Monthly"
+	}
+	,
+	{
+		"name": "Yearly",
+		"value": "DFRE3",
+		"text": "Yearly"
+	}
+]
+
+// get priority
+[
+{
+	"name": "Immediate",
+	"value": "3",
+	"text": "Immediate"
+},
+
+	{
+		"name": "Urgent",
+		"value": "2",
+		"text": "Urgent"
+	},
+	{
+		"name": "Important",
+		"value": "1",
+		"text": "Important"
+	}
+
+]
+
+// get Assignee department
+[
+	{
+		"name": "N/A",
+		"value": "AD0",
+		"text": "N/A"
+	},
+	{
+		"name": "Data Mining Department",
+		"value": "AD1",
+		"text": "Data Mining Department"
+	}
+]
+
+
+// get Assignee names
+[
+	{
+		"name": "Chamil Ananda",
+		"value": "E001",
+		"text": "Chamil Ananda"
+	},
+	{
+		"name": "Madhawa Chaminda",
+		"value": "E001",
+		"text": "Madhawa Chaminda"
+	}
+]
+PA
+APPROVED
+REJECTED
+ASSIGNED
+WIP
+PI
+COMPLETED
+// get status
+[
+	{
+		"name": "Created",
+		"value": "CREATED",
+		"text": "Created"
+	},
+	{
+		"name": "Pending Approval",
+		"value": "PA",
+		"text": "Pending Approval"
+	},
+	{
+		"name": "Approved",
+		"value": "APPROVED",
+		"text": "Approved"
+	},
+	{
+		"name": "Rejected",
+		"value": "REJECTED",
+		"text": "Rejected"
+	},
+	{
+		"name": "Assigned",
+		"value": "ASSIGNED",
+		"text": "Assigned"
+	},
+	{
+		"name": "Work Inprogress",
+		"value": "WIP",
+		"text": "Work Inprogress"
+	},
+	{
+		"name": "Pending Information",
+		"value": "PI",
+		"text": "Pending Information"
+	},
+	{
+		"name": "Completed",
+		"value": "COMPLETED",
+		"text": "Completed"
+	}
+]
