@@ -1,0 +1,257 @@
+<div class="ui grid">
+    <div class="column sixteen wide">
+        <div class="ui form">
+            <div class="ui equal width grid">
+                <div class="equal width row">
+                  <div class="column">
+                    <div class="required field">
+                        <label>Request ID</label>
+                        <input type="text" id="txt_Request_id_rq">
+                    </div>
+                  </div>
+                    <div class="column">
+                        <div class="required field">
+                            <label>Request Reference (Employee ID)</label>
+                            <input type="text" id="txt_employee_id_rq">
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <label>Date Requested (DD/MM/YYYY)</label>
+                            <form class="ui form">
+                                <div class="ui left icon input">
+                                    <input type="text" name="date_requested" id="txt_date_requested_rq" />
+                                    <i class="calendar icon"></i>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label>Previously Submitted Requests</label>
+                            <div class="ui search selection dropdown" id="drop_previous_requests_rq">
+                                <input name="Assigned Department" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Request IDs</div>
+                                <div class="menu" tabindex="-1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <label>Name</label>
+                            <input type="text" id="txt_name_rq">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label>Designation</label>
+                            <div class="ui selection dropdown" id="drop_designation_rq">
+                                <input name="gender" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Designation</div>
+                                <div class="menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <label>Department/ Branch Name</label>
+                            <div class="ui selection dropdown" id="drop_branches_rq">
+                                <input name="gender" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Department/Branch</div>
+                                <div class="menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label>Contact Details (Email/ Phone /Mobile)</label>
+                            <input type="text" id="txt_contact_rq">
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <label>Report Title</label>
+                            <input type="text" id="txt_rt_rq">
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <label>Business Purpose</label>
+                            <textarea rows="5" id="ta_bp_rq"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <label>Priority</label>
+                            <div class="ui selection dropdown" id="drop_priority_rq">
+                                <input name="gender" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Priority</div>
+                                <div class="menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label>Data Required As At Date (MM/DD/YYYY)</label>
+                            <form class="ui form">
+                                <div class="ui left icon input">
+                                    <input type="text" name="dropup" id="txt_duedate_rq" />
+                                    <i class="calendar icon"></i>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <label>Information Request Type</label>
+                            <div class="ui selection dropdown" id="drop_types_rq">
+                                <input name="gender" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Information Request Type</div>
+                                <div class="menu"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label>Information Delivery Format</label>
+                            <div class="ui selection dropdown" id="drop_delivery_format_rq">
+                                <input name="gender" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Information Delivery Format</div>
+                                <div class="menu"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <label>Frequency</label>
+                            <div class="ui selection dropdown" id="drop_frequency_rq">
+                                <input name="gender" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Frequency</div>
+                                <div class="menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <label>Required Column Headings (Customer Name/ Customer ID/ Balance in LKR / Currency Code)</label>
+                            <textarea rows="5" id="ta_require_columns_rq"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <label>Filtering Criteria</label>
+                            <textarea rows="5" id="txt_fc_rq"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <label>Status</label>
+                            <div class="ui selection dropdown" id="drop_status_rq">
+                                <input name="gender" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Status</div>
+                                <div class="menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                    </div>
+                </div>
+                <div class="equal width row" id="div_assign_details_container_rq">
+                    <div class="column">
+                        <div class="field">
+                            <label>Assign Department</label>
+                            <div class="ui selection dropdown" id="drop_assigned_dpt_rq">
+                                <input name="Assigned Department" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Assigned Department</div>
+                                <div class="menu">
+                                    <div class="item" data-value="Account" data-text="Account">Account</div>
+                                    <div class="item" data-value="Audit" data-text="Audit">Audit</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label>Assign User</label>
+                            <div class="ui selection dropdown" id="drop_assigned_user_rq">
+                                <input name="Assign User" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Assign User</div>
+                                <div class="menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equal width row">
+                    <div class="ui horizontal divider"> Work Notes </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="ui teal labeled icon button" id="btn_add_worknotes_rq">
+                                Add Work Note
+                                <i class="add icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field ui feed" id="div_worknotes_container">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="equal width row">
+                    <div class="column">
+                        <div class="field">
+                            <button class="positive ui button hide" id="btn_submit_for_approval_rq">Submit for approval</button>
+                            <button class="gray ui button" id="btn_save_rq">Save</button>
+                            <button class="ui button" id="btn_cancel_rq"> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.hide {
+    display: none !important;
+}
+.show {
+    display: block !important;
+}
+.jobModel {
+  height: 200px ;
+      overflow-y: scroll ;
+}
+.largeText{
+  font-size: 17px;
+}
+
+#searchResultContainer .ui.steps {
+    line-height: 0.7em;
+}
+
+#searchResultContainer .ui.steps .step, .ui.step{
+  font-size: 10px;
+}
