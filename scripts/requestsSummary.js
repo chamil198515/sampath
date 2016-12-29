@@ -1,12 +1,12 @@
     $(document).on("click", "[id ^='lnk_request_id_']", function() {
         var element_id = $(this).attr('id');
         var request_id = element_id.split('_').pop();
-        renderRequest(request_id, false);
+        renderRequest(request_id, false,false);
     });
     $(document).on("click", "[id ^='btn_viewDetails_']", function() {
         var element_id = $(this).attr('id');
         var request_id = element_id.split('_').pop();
-        renderRequest(request_id, false);
+        renderRequest(request_id, false,false);
     });
 
     function renderRequestsSummary(user_id) {

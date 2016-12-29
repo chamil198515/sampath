@@ -60,10 +60,10 @@ function renderMainContainer(user_id) {
                     renderRequestsSummary(user_id);
                     break;
                 case "lnk-createRequest":
-                    renderRequest(0, true);
+                    renderRequest(0, true, false);
                     break;
                 default:
-                    alert("default");
+                    renderLogin();
             }
         });
     });

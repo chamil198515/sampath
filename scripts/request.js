@@ -1,5 +1,4 @@
 var workNotes = [];
-
 $(document).on("click", "[id ^='btn_add_worknotes_']", function() {
     var element_id = $(this).attr('id');
     var request_id = element_id.split('_').pop();
@@ -10,14 +9,13 @@ $(document).on("click", "[id ^='btn_add_worknotes_']", function() {
         var element_id = $(elementsArray[i]).attr('id');
         var id_elements = element_id.split("_");
         workNotes.push({
-            "id": id_elements[3],
+            "id": 0,
             "createdDate": getCurrentDate(),
             "modifieddDate": getCurrentDate(),
             "submitter": "Madhawa Chaminda",
             "comment": $(elementsArray[i]).val()
         });
     }
-
 
     workNotes.push({
         "id": 0,
@@ -129,7 +127,7 @@ $(document).on("click", "[id ^='btn_save_']", function() {
 
 
 
-function renderRequest(request_id, isNewRequest) {
+function renderRequest(request_id, isNewRequest, isPreviousRequest) {
     $('#requestContainer').empty();
     var request = {};
     $.get("html/request.html", function(data) {
@@ -139,25 +137,39 @@ function renderRequest(request_id, isNewRequest) {
         elementsArray = $('#requestContainer').find("[id$='_rq']");
         for (var j = 0; j < elementsArray.length; j++) {
             var element_id = $(elementsArray[j]).attr("id");
-            element_id = element_id.replace("_rq", "_" + request_id);
+            if(isPreviousRequest){
+              element_id = element_id.replace("_rq", "_" + 0);
+            }
+            else{
+              element_id = element_id.replace("_rq", "_" + request_id);
+            }
             $(elementsArray[j]).attr("id", element_id);
         }
-        if (!isNewRequest) {
+        if (!isNewRequest || isPreviousRequest) {
             $.get('request.json', function(data) {
                 request = $.parseJSON(data);
+
+                if(isPreviousRequest){
+                  request_id = 0;
+                  request.request_id = 0;
+                  request.comments = [];
+                  request.status = 'CREATED';
+                }
+
                 if (['CREATED', 'PA', 'REJECTED'].indexOf(request.status) > -1) {
                     $('#div_assign_details_container_' + request_id).addClass('hide');
                 }
-
                 if (['CREATED', 'REJECTED'].indexOf(request.status) > -1) {
                     $('#btn_submit_for_approval').removeClass('hide');
                 }
+
                 setValues(request, request_id);
-                disableInputFeilds(request_id);
+                if(!isPreviousRequest){disableInputFeilds(request_id);}
+
             });
         } else {
             $('#div_assign_details_container_' + request_id).addClass('hide');
-            $('#btn_submit_for_approval').removeClass('hide');
+            $('#btn_submit_for_approval_' + request_id).removeClass('hide');
             setValues('', request_id);
         }
 
@@ -192,8 +204,8 @@ function renderWorkNotes(request_id, worknotesList) {
             element_id = 'txt_worknotes_' + request_id + '_' + worknotesList[i].id;
             $($('#txt_worknotes').attr('id', element_id)).val(worknotesList[i].comment);
 
-            if(request_id != 0 && worknotesList[i].id !=0){
-              $('#'+element_id).prop('disabled', true);
+            if (request_id != 0 && worknotesList[i].id != 0) {
+                $('#' + element_id).prop('disabled', true);
             }
         }
     });
@@ -225,6 +237,14 @@ function enableDropdown(id, url, selected_item) {
             if (selected_item != "") {
 
                 $(id).dropdown('set selected', selected_item);
+            }
+
+            if(id.indexOf("drop_previous_requests_") >= 0){
+              $(id).dropdown({
+                  onChange: function(val) {
+                      renderRequest(val,true,true);
+                  }
+              });
             }
         }
     });
@@ -260,8 +280,13 @@ function setValues(request, request_id) {
     var status = 'CREATED';
     workNotes = []
     if (request.length != 0) {
+        if(request_id == 0){
+          $('#h1_Request_id_' + request_id).text('New Request');
+        }
+        else{
+          $('#h1_Request_id_' + request_id).text(request_id);
+        }
 
-        $('#h1_Request_id_' + request_id).text(request_id);
         $('#txt_employee_id_' + request_id).val(request.employee_id);
         $('#txt_name_' + request_id).val(request.name);
         var contact_details = '';
@@ -349,7 +374,7 @@ function disableInputFeilds(request_id) {
     $('#drop_types_' + request_id).addClass('disabled');
     $('#drop_delivery_format_' + request_id).addClass('disabled');
     $('#drop_frequency_' + request_id).addClass('disabled');
-      $('#ta_require_columns_' + request_id).prop('disabled', true);
+    $('#ta_require_columns_' + request_id).prop('disabled', true);
     $('#drop_assigned_dpt_' + request_id).addClass('disabled');
     $('#drop_assigned_user_' + request_id).addClass('disabled');
     $('#drop_status_' + request_id).addClass('disabled');

@@ -19,3 +19,7 @@
 #searchResultContainer .ui.steps .step, .ui.step{
   font-size: 10px;
 }
+
+.menuImage{
+  padding: 5px;
+}
