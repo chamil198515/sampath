@@ -1,11 +1,18 @@
 <div class="ui grid">
     <div class="column sixteen wide">
         <div class="ui form">
-            <div class="ui positive message">
-                <p id="p_success_message"> Request was successfully saved </p>
+            <div class="ui error message" id="errorMessageContainer">
+                <i class="close icon"></i>
+                <div class="header" id="errorMessage">
+
+                </div>
             </div>
-            <div class="ui negative message">
-                <p id="p_error_message"> An Error occured while saving request </p>
+
+            <div class="ui positive message hide">
+                <p id="p_success_message"> </p>
+            </div>
+            <div class="ui negative message hide">
+                <p id="p_error_message"> </p>
             </div>
             <div class="ui equal width grid">
                 <div class="equal width row">
@@ -15,15 +22,15 @@
                         </div>
                     </div>
                     <div class="column">
-                        <div class="required field">
+                        <div class="required field" id="field_employee_id_rq">
                             <label>Request Reference (Employee ID)</label>
-                            <input type="text" id="txt_employee_id_rq">
+                            <input type="text" name="empty" id="txt_employee_id_rq">
                         </div>
                     </div>
                 </div>
                 <div class="equal width row">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_date_requested_rq">
                             <label>Date Requested (DD/MM/YYYY)</label>
                             <form class="ui form">
                                 <div class="ui left icon input">
@@ -34,7 +41,7 @@
                         </div>
                     </div>
                     <div class="column">
-                        <div class="field">
+                        <div class="field" id="field_previous_requests_rq">
                             <label>Previously Submitted Requests</label>
                             <div class="ui search selection dropdown" id="drop_previous_requests_rq">
                                 <input name="Assigned Department" type="hidden">
@@ -48,13 +55,13 @@
                 </div>
                 <div class="equal width row">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" d="field_name_rq">
                             <label>Name</label>
                             <input type="text" id="txt_name_rq">
                         </div>
                     </div>
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_designation_rq">
                             <label>Designation</label>
                             <div class="ui selection dropdown" id="drop_designation_rq">
                                 <input name="gender" type="hidden">
@@ -68,7 +75,7 @@
                 </div>
                 <div class="equal width row">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_branches_rq">
                             <label>Department/ Branch Name</label>
                             <div class="ui selection dropdown" id="drop_branches_rq">
                                 <input name="gender" type="hidden">
@@ -80,15 +87,21 @@
                         </div>
                     </div>
                     <div class="column">
-                        <div class="field">
-                            <label>Contact Details (Email/ Phone /Mobile)</label>
-                            <input type="text" id="txt_contact_rq">
+                        <div class="required field" id="field_phone_rq">
+                            <label>Phone /Mobile</label>
+                            <input type="text" id="txt_phone_rq">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="required field" id="field_email_rq">
+                            <label>Email</label>
+                            <input type="text" id="txt_email_rq">
                         </div>
                     </div>
                 </div>
                 <div class="equal width row">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_rt_rq">
                             <label>Report Title</label>
                             <input type="text" id="txt_rt_rq">
                         </div>
@@ -96,7 +109,7 @@
                 </div>
                 <div class="equal width row">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_bp_rq">
                             <label>Business Purpose</label>
                             <textarea rows="5" id="ta_bp_rq"></textarea>
                         </div>
@@ -104,7 +117,7 @@
                 </div>
                 <div class="equal width row">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_priority_rq">
                             <label>Priority</label>
                             <div class="ui selection dropdown" id="drop_priority_rq">
                                 <input name="gender" type="hidden">
@@ -116,7 +129,7 @@
                         </div>
                     </div>
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_duedate_rq">
                             <label>Data Required As At Date (MM/DD/YYYY)</label>
                             <form class="ui form">
                                 <div class="ui left icon input">
@@ -129,7 +142,7 @@
                 </div>
                 <div class="equal width row">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_types_rq">
                             <label>Information Request Type</label>
                             <div class="ui selection dropdown" id="drop_types_rq">
                                 <input name="gender" type="hidden">
@@ -140,7 +153,7 @@
                         </div>
                     </div>
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_delivery_format_rq">
                             <label>Information Delivery Format</label>
                             <div class="ui selection dropdown" id="drop_delivery_format_rq">
                                 <input name="gender" type="hidden">
@@ -153,7 +166,7 @@
                 </div>
                 <div class="equal width row">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_frequency_rq">
                             <label>Frequency</label>
                             <div class="ui selection dropdown" id="drop_frequency_rq">
                                 <input name="gender" type="hidden">
@@ -169,7 +182,7 @@
                 </div>
                 <div class="equal width row">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_require_columns_rq">
                             <label>Required Column Headings (Customer Name/ Customer ID/ Balance in LKR / Currency Code)</label>
                             <textarea rows="5" id="ta_require_columns_rq"></textarea>
                         </div>
@@ -177,7 +190,7 @@
                 </div>
                 <div class="equal width row">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_fc_rq">
                             <label>Filtering Criteria</label>
                             <textarea rows="5" id="txt_fc_rq"></textarea>
                         </div>
@@ -185,7 +198,7 @@
                 </div>
                 <div class="equal width row">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field" id="field_status_rq">
                             <label>Status</label>
                             <div class="ui selection dropdown" id="drop_status_rq">
                                 <input name="gender" type="hidden">
@@ -201,7 +214,7 @@
                 </div>
                 <div class="equal width row" id="div_assign_details_container_rq">
                     <div class="column">
-                        <div class="field">
+                        <div class="required field">
                             <label>Assign Department</label>
                             <div class="ui selection dropdown" id="drop_assigned_dpt_rq">
                                 <input name="Assigned Department" type="hidden">
@@ -215,7 +228,7 @@
                         </div>
                     </div>
                     <div class="column">
-                        <div class="field">
+                        <div class="required field">
                             <label>Assign User</label>
                             <div class="ui selection dropdown" id="drop_assigned_user_rq">
                                 <input name="Assign User" type="hidden">

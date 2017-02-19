@@ -16,12 +16,43 @@ $(document).ready(function() {
             var isAuthenticated = true;
             if (isAuthenticated) {
                 renderMainContainer(employeeObj.user_id);
+                var user_Obj = { "name":"John", "employee_id":"E001", "branch":"GMP",
+                "designation":6,"phone_no":"0772926206","email":"chamil2gmail.com","authToken":"61411a5d-1d5e-4473-8967-a77755dea7af" };
+
+                setCookie("user_Obj",JSON.stringify(user_Obj),1)
+
             } else {
                 $('msg-loginFailure').removeClass('hide');
             }
         });
     });
 });
+
+
+function setCookie(cname, cvalue,exdays) {
+    var user = getCookie(cname);
+    if (user == "") {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      var exdays = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + exdays + ";path=/";
+    }
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 
 
 function enableSearch() {
