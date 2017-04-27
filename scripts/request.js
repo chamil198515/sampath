@@ -1,10 +1,6 @@
 var workNotes = [];
-var manager_id = 'E001';
-var user_obj = {};
 // A $( document ).ready() block.
-$(document).ready(function() {
-    user_obj = JSON.parse(getCookie("user_Obj"));
-});
+
 
 $('.field.example form')
     .form({
@@ -180,8 +176,9 @@ $(document).on("click", "[id ^='btn_submit_for_approval_']", function() {
       $('#errorMessage').text('Some required feilds are empty');
       $('#errorMessageContainer').addClass('visible');
     } else {
-        requestObj.assignee = manager_id;
-        requestObj.status = 'PA';
+        var user_obj = JSON.parse(getCookie("user_Obj"));
+        requestObj.assignee = user_obj.immediate_manager_id;
+        requestObj.status = "2";
         var type = "POST";
         if (request_id != 0) {
             type = "put";
@@ -207,6 +204,12 @@ $(document).on("click", "[id ^='btn_submit_for_approval_']", function() {
         });
     }
     return false;
+});
+
+$(document).on("click", "[id ^='btn_cancel_']", function() {
+    var user_obj = JSON.parse(getCookie("user_Obj"));
+    renderSearch();
+    renderRequestsSummary(user_obj.employee_id);
 });
 
 function populateRequestObj(request_id) {
@@ -342,9 +345,9 @@ function populateRequestObj(request_id) {
                 "contactType": "email"
             }],
             "branch": {
-                "branch_code": branch_code,
-                "branch_name": branch_name,
-                "branch_location": ""
+                "value": branch_code,
+                "name": branch_name,
+                "text": ""
             },
             "request_type": request_type,
             "delivery_format": delivery_format,
@@ -405,6 +408,9 @@ function renderRequest(request_id, isNewRequest, isPreviousRequest) {
                     }
                     if ([1, 4].indexOf(request.status) > -1) {
                         $('#btn_submit_for_approval_' + request_id).removeClass('hide');
+                    }
+                    if(request.status == 2){
+                      $('#div_approve_btn_container_' + request_id).removeClass('hide');
                     }
 
                     setValues(request, request_id);
@@ -516,6 +522,7 @@ function getCurrentDate() {
 }
 
 function setValues(request, request_id) {
+    var user_obj = JSON.parse(getCookie("user_Obj"));
     var date_requested = getCurrentDate();
     var previous_request = '';
     var designation = '';
@@ -557,7 +564,7 @@ function setValues(request, request_id) {
             $('#txt_email_' + request_id).val(email);
 
             designation = request.designation;
-            branch_code = request.branch.branch_code;
+            branch_code = request.branch.value;
         }
 
 
@@ -605,7 +612,7 @@ function setValues(request, request_id) {
     temp_id = '#drop_priority_' + request_id;
     enableDropdown(temp_id, 'http://localhost:8080/priority_list', priority);
 
-    var temp_id = '#txt_duedate_' + request_id;
+    temp_id = '#txt_duedate_' + request_id;
     enableDatePicker(temp_id, duedate);
 
     temp_id = '#drop_types_' + request_id;
@@ -647,9 +654,9 @@ function disableInputFeilds(request_id) {
     $('#drop_delivery_format_' + request_id).addClass('disabled');
     $('#drop_frequency_' + request_id).addClass('disabled');
     $('#ta_require_columns_' + request_id).prop('disabled', true);
-    $('#drop_assigned_dpt_' + request_id).addClass('disabled');
-    $('#drop_assigned_user_' + request_id).addClass('disabled');
-    $('#drop_status_' + request_id).addClass('disabled');
+    //$('#drop_assigned_dpt_' + request_id).addClass('disabled');
+    //$('#drop_assigned_user_' + request_id).addClass('disabled');
+    //$('#drop_status_' + request_id).addClass('disabled');
     //$("[id^='txt_worknotes_']").prop('disabled', true);
 }
 

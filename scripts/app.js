@@ -16,8 +16,9 @@ $(document).ready(function() {
             var isAuthenticated = true;
             if (isAuthenticated) {
                 renderMainContainer(employeeObj.user_id);
-                var user_Obj = { "name":"John", "employee_id":"E001", "branch":"GMP",
-                "designation":6,"phone_no":"0772926206","email":"chamil2gmail.com","authToken":"61411a5d-1d5e-4473-8967-a77755dea7af" };
+                var user_Obj = { "name":"John", "employee_id":employeeObj.user_id, "branch":"1000",
+                "designation":6,"phone_no":"0772926206","email":"chamil2gmail.com",
+                "authToken":"61411a5d-1d5e-4473-8967-a77755dea7af","immediate_manager_id":"E002" };
 
                 setCookie("user_Obj",JSON.stringify(user_Obj),1)
 

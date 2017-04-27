@@ -12,14 +12,26 @@
   font-size: 17px;
 }
 
-#searchResultContainer .ui.steps {
+#assignedRequestsContainer .ui.steps {
     line-height: 0.7em;
 }
 
-#searchResultContainer .ui.steps .step, .ui.step{
+#assignedRequestsContainer .ui.steps .step, .ui.step{
+  font-size: 10px;
+}
+
+#submittedRequestsContainer .ui.steps {
+    line-height: 0.7em;
+}
+
+#submittedRequestsContainer .ui.steps .step, .ui.step{
   font-size: 10px;
 }
 
 .menuImage{
   padding: 5px;
+}
+
+.submitRequestDivider{
+  padding-top: 10px;
 }
